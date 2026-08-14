@@ -175,8 +175,35 @@ public class GestionEmpleados {
 	 * </ul>
 	 */
 	public void mostrarConteoPorTipo() {
-		// TODO: completar
+		String[] tipos = new String[cantidad];
+		int[] conteos = new int[cantidad];
+		int tiposUsados = 0;
+
+		for (int i = 0; i < cantidad; i++) {
+
+			String tipoActual = empleados[i].getTipo();
+			boolean encontrado = false;
+
+			for (int j = 0; j < tiposUsados; j++) {
+				if (tipos[j].equals(tipoActual)) {
+					conteos[j]++;
+					encontrado = true;
+					break;
+				}
+			}
+
+			if (!encontrado) {
+				tipos[tiposUsados] = tipoActual;
+				conteos[tiposUsados] = 1;
+				tiposUsados++;
+			}
+		}
+
+		for (int i = 0; i < tiposUsados; i++) {
+			System.out.println(tipos[i] + ": " + conteos[i]);
+		}
 	}
+
 
 	/**
 	 * RETO OPCIONAL (10 pts extra)
